@@ -1,0 +1,25 @@
+#navButton
+    button.icon(aria-label="navigation button") menu
+nav#primaryNavigation(aria-label="primary navigation"): ul
+    li#linkToAbout
+        a(href="#aboutOverlay")
+            .icon home
+            div About
+            .icon remove
+    li#linkToGenealogy
+        a(href="/genealogy")
+                .icon family_history
+                div Genealogy
+                .icon link
+    li#linkToScrapbook
+        a(href="/scrapbook") 
+            .icon cut
+            div Scrapbook
+            .icon link
+    li#linkToCookbook: details
+        summary 
+            span 
+                .icon restaurant
+                div Cookbook
+            .icon keyboard_arrow_down
+        ul(aria-label="family recipes")

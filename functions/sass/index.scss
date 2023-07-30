@@ -1,0 +1,92 @@
+@use "_ui";
+@use "_layout";
+
+#heroImage{
+    object-position: center 20%;
+    height: 100%; 
+    width: 100%;
+}
+
+#aboutOverlay {
+    position: absolute;
+    inset: auto auto 0 50%;
+    transform: translateX(-50%);
+    backdrop-filter: blur(25px);
+    // ! must change if theme colors change
+    background-color: #fff8e777;
+    color: #4f5742;
+    border-radius: 1em 1em 0 0;
+    box-shadow: var(--shadow--4px);
+    height: 90%;
+    width: 90%;
+    max-width: 80ch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em;
+    font-size: 1.15rem;
+
+    .title{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        h1 {
+            flex: 1;
+            font-size: 1.5em;
+            font-family: "Dawning of a New Day", cursive;
+        }
+    }
+
+    .subtitle{
+        font-size: 1.5em;
+    }
+
+    .body{
+        max-width: 60ch;
+        margin: 1em 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+
+    .hideArticle{ // button
+        @include ui.button();
+        margin-left: auto;
+    }
+
+    &.hide{
+        transition: 500ms;
+        transform: translate(-50%, calc(100% - 4rlh));
+        .subtitle, .body {
+            opacity: 0%;
+        }
+        .hideArticle{
+            transition: 250ms ease-in;
+            rotate: 180deg;
+        }
+    }
+    &.show{
+        transition: 500ms;
+        transform: translate(-50%, 0%);
+        .subtitle, .body {
+            opacity: 0%;
+        }
+        .hideArticle{
+            transition: 250ms;
+            rotate: 0deg;
+        }
+        
+    }
+}
+
+@media (prefers-color-scheme: dark){
+    #aboutOverlay {
+        // ! must change if theme colors change
+        background-color: #4f5742aa;
+        color: #fff8e7;
+    }
+}

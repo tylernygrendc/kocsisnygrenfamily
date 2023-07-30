@@ -1,0 +1,29 @@
+extends _layout
+
+prepend title
+    - const title = "Home";
+    - const pageRef = "index";
+    - const description = ""
+
+append css
+    link(rel="stylesheet", href=`../css/${ pageRef }.css`)
+
+append js
+    script(defer src=`../js/${ pageRef }.js`) 
+
+prepend body 
+    include _nav
+
+block article
+    article#aboutOverlay.hide
+        span.title 
+            h1 About Us
+            button.hideArticle.icon keyboard_arrow_down
+        span.subtitle(aria-label="article subtitle") The Kocsis-Nygren Family is Growing
+        div.body 
+            p Tyler Nygren and Barbora Kocsisova are expecting their first daughter in late September 2023!
+    picture
+        source(media="(max-width: 400px)" srcset="../../img/index-hero-800px.webp")
+        source(media="(max-width: 800px)" srcset="../../img/index-hero-1600px.webp")
+        source(media="(min-width: 800px)" srcset="../../img/index-hero-3200px.webp")
+        img#heroImage(src="../../img/index-hero.webp", alt="hero image for index page")

@@ -1,0 +1,203 @@
+
+:root {
+  --primaryColor: #69725a;
+  --accentColor: #d88f75;
+  --textColor: #fff8e7;
+
+  --shadow--2px: 0px 0px 4px 2px rgb(0 0 0 / 40%);
+  --shadow--4px: 0px 0px 8px 4px rgb(0 0 0 / 40%);
+  --shadow--8px: 0px 0px 16px 8px rgb(0 0 0 / 40%);
+}
+
+@media (prefers-color-scheme: dark), (prefers-contrast: more) {
+    :root{
+      --primaryColor: #4f5742;
+      --accentColor: #d88f75;
+      --textColor: #fff8e7;
+    }
+}
+
+@font-face {
+  font-family: "Dawning of a New Day";
+  src: url("/font/dawningofanewday.ttf") format("ttf");
+}
+
+@font-face {
+    font-family: "EB Garamond";
+    src: url("/font/ebgaramond.ttf");
+  }
+
+@font-face {
+  font-family: "Material Icons";
+  content: "&#9633";
+  src: url("/font/materialsymbols.woff2") format("woff2");
+}
+
+@mixin text($size: 1em) {
+  display: inline-block;
+  font-family: "EB Garamond", serif;
+  font-size: $size;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+@mixin icon($size: 1em) {
+  display: inline-block;
+  font-family: "Material Icons" !important;
+  font-size: $size;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  font-optical-sizing: auto !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}
+
+@mixin button($size: 1em) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em;
+    border: 0 solid;
+    border-radius: 0.5em;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: $size;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    cursor: pointer;
+  
+    &:focus-within,
+    &:focus-visible {
+      outline: 2px solid var(--accentColor);
+    }
+  
+    * {
+      background-color: transparent;
+      text-decoration: none !important;
+  
+      &:focus-visible {
+        outline: 0px;
+      }
+    }
+
+    &:hover{
+      background-color: rgb(256 256 256 / 5%);
+    }
+  
+    :last-child {
+      margin-left: auto;
+    }
+  }
+
+@mixin scrollbar(){
+  &::-webkit-scrollbar{
+    width: 0.5em;
+    border-radius: 0.25em;
+    background-color: rgb(0 0 0 / 10%);
+    &-thumb{
+      width: 0.5rem;
+      border-radius: 0.25em;
+      background-color: rgb(256 256 256 / 25%);
+    }
+    &-button,
+    &-corner {
+      display: none;
+    }
+  }
+}
+  
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+body{
+    background-color: var(--primaryColor);
+    color: var(--textColor);
+    @include text(1rem);
+}
+
+img,
+svg,
+video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+}
+
+details {
+  summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > :last-child {
+      position: relative;
+      right: 0.25em;
+      margin-left: auto;
+    }
+  }
+  &[open] summary {
+    > :last-child{
+      rotate: 180deg;
+    }
+  }
+}
+
+.icon {
+  @include icon;
+}
+
+.visible{
+  transition: 250ms ease-in;
+  opacity: 100%;
+  visibility: visible !important;
+}
+
+.invisible {
+  transition: 250ms ease-in;
+  opacity: 0%;
+  visibility: hidden !important;
+}
+
+.appeared {
+  transition: 250ms ease-in;
+  opacity: 100%;
+}
+
+.disappeared {
+  transition: 250ms ease-in;
+  opacity: 0%;
+  display: none !important;
+}
+
+.button {
+  @include button;
+  &--outlined{
+    outline: 2px solid var(--textColor);
+  }
+}

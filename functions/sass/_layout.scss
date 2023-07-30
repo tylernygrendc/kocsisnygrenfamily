@@ -1,0 +1,131 @@
+
+@use "_ui";
+
+$navWidth: clamp(250px, 30svw, 500px);
+
+body{
+    width: 100svw;
+    min-height: 100svh;
+}
+
+#navButton {
+    z-index: 8;
+    position: fixed;
+    inset: 0 auto auto 0.5em;
+    visibility: hidden;
+    box-shadow: var(--shadow--8px);
+    border-radius: 0 0 0.5em 0.5em;
+    background-color: var(--primaryColor);
+
+    button {
+        @include ui.button(1.5rem);
+        border-radius: 0 0 0.5em 0.5em;
+    }
+}
+
+#primaryNavigation {
+    z-index: 4;
+    position: fixed;
+    inset: 0 $navWidth 0 0;
+    width: $navWidth;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-shadow: var(--shadow--4px);
+    background-color: var(--primaryColor);
+    color: var(--textColor);
+
+    > ul{
+        font-size: 1.25rem;
+        list-style-type: none;
+        width: 100%;
+        padding-top: 3em;
+        padding-right: 0.5em;
+
+        li {
+            padding: 0.5em;
+            padding-left: 1em;
+            border-radius: 0 0.5em 0.5em 0;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgb(256 256 256 / 5%);
+            }
+
+            &:focus-within {
+              outline: 2px solid var(--accentColor);
+                * {
+                    outline: 0px;
+                }
+            }
+
+            &:has(ul li a:focus-visible){
+                outline: 0px;
+            }
+
+            ul li a:focus-visible{
+                outline: 2px solid var(--accentColor);
+                * {
+                    outline: 0px;
+                }
+            }
+
+            span, a {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.5em;
+                color: var(--textColor) !important;
+                text-decoration: none !important;
+                :nth-child(3){
+                    position: relative;
+                    right: 0.25em;
+                    margin-left: auto;  
+                }
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                margin: 0.5em;
+                max-height: 50svh;
+                overflow-y: scroll;
+                @include ui.scrollbar;
+                scrollbar-width: thin;
+                scrollbar-color: rgb(256 256 256 / 25%) rgb(0 0 0 / 10%);
+
+                li {
+                    padding: 0.5em;
+                    margin-right: 0.5em;
+                    border-radius: 0.25em;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+
+}
+
+#mainArticle {
+    z-index: 0;
+    position: fixed;
+    inset: 0 0 0 $navWidth;
+}
+
+@media (max-width: 768px) {
+    #navButton{
+        visibility: visible;
+        box-shadow: var(--shadow--8px);
+    }
+    #primaryNavigation {
+        inset: 0 0 0 0;
+        width: 100svw;
+        visibility: hidden;
+    }
+    #mainArticle {
+        inset: 0 0 0 0;
+        width: 100svw;
+    }
+}

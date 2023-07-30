@@ -1,0 +1,16 @@
+extends _layout
+
+prepend title
+    - const title = "Home";
+    - const pageRef = "genealogy";
+    - const description = ""
+
+append css
+    link(rel="stylesheet", href=`../css/${ pageRef }.css`)
+
+append js
+    script(defer src=`../js/${ pageRef }.js`) 
+
+prepend body
+    h1 Coming soon...
+    span This webpage is under construction.

@@ -1,0 +1,432 @@
+:root {
+  --primaryColor: #69725a;
+  --accentColor: #d88f75;
+  --textColor: #fff8e7;
+  --shadow--2px: 0px 0px 4px 2px rgb(0 0 0 / 40%);
+  --shadow--4px: 0px 0px 8px 4px rgb(0 0 0 / 40%);
+  --shadow--8px: 0px 0px 16px 8px rgb(0 0 0 / 40%);
+}
+
+@media (prefers-color-scheme: dark), (prefers-contrast: more) {
+  :root {
+    --primaryColor: #4f5742;
+    --accentColor: #d88f75;
+    --textColor: #fff8e7;
+  }
+}
+@font-face {
+  font-family: "Dawning of a New Day";
+  src: url("/font/dawningofanewday.ttf") format("ttf");
+}
+@font-face {
+  font-family: "EB Garamond";
+  src: url("/font/ebgaramond.ttf");
+}
+@font-face {
+  font-family: "Material Icons";
+  content: "&#9633";
+  src: url("/font/materialsymbols.woff2") format("woff2");
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+body {
+  background-color: var(--primaryColor);
+  color: var(--textColor);
+  display: inline-block;
+  font-family: "EB Garamond", serif;
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+
+img,
+svg,
+video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+}
+
+details summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+details summary > :last-child {
+  position: relative;
+  right: 0.25em;
+  margin-left: auto;
+}
+details[open] summary > :last-child {
+  rotate: 180deg;
+}
+
+.icon {
+  display: inline-block;
+  font-family: "Material Icons" !important;
+  font-size: 1em;
+  font-weight: normal !important;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  font-optical-sizing: auto !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  text-shadow: none !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+}
+
+.visible {
+  transition: 250ms ease-in;
+  opacity: 100%;
+  visibility: visible !important;
+}
+
+.invisible {
+  transition: 250ms ease-in;
+  opacity: 0%;
+  visibility: hidden !important;
+}
+
+.appeared {
+  transition: 250ms ease-in;
+  opacity: 100%;
+}
+
+.disappeared {
+  transition: 250ms ease-in;
+  opacity: 0%;
+  display: none !important;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 0.5em;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+.button:focus-within, .button:focus-visible {
+  outline: 2px solid var(--accentColor);
+}
+.button * {
+  background-color: transparent;
+  text-decoration: none !important;
+}
+.button *:focus-visible {
+  outline: 0px;
+}
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.button :last-child {
+  margin-left: auto;
+}
+.button--outlined {
+  outline: 2px solid var(--textColor);
+}
+
+body {
+  width: 100svw;
+  min-height: 100svh;
+}
+
+#navButton {
+  z-index: 8;
+  position: fixed;
+  inset: 0 auto auto 0.5em;
+  visibility: hidden;
+  box-shadow: var(--shadow--8px);
+  border-radius: 0 0 0.5em 0.5em;
+  background-color: var(--primaryColor);
+}
+#navButton button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 0.5em;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  border-radius: 0 0 0.5em 0.5em;
+}
+#navButton button:focus-within, #navButton button:focus-visible {
+  outline: 2px solid var(--accentColor);
+}
+#navButton button * {
+  background-color: transparent;
+  text-decoration: none !important;
+}
+#navButton button *:focus-visible {
+  outline: 0px;
+}
+#navButton button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#navButton button :last-child {
+  margin-left: auto;
+}
+
+#primaryNavigation {
+  z-index: 4;
+  position: fixed;
+  inset: 0 clamp(250px, 30svw, 500px) 0 0;
+  width: clamp(250px, 30svw, 500px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: var(--shadow--4px);
+  background-color: var(--primaryColor);
+  color: var(--textColor);
+}
+#primaryNavigation > ul {
+  font-size: 1.25rem;
+  list-style-type: none;
+  width: 100%;
+  padding-top: 3em;
+  padding-right: 0.5em;
+}
+#primaryNavigation > ul li {
+  padding: 0.5em;
+  padding-left: 1em;
+  border-radius: 0 0.5em 0.5em 0;
+  cursor: pointer;
+}
+#primaryNavigation > ul li:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#primaryNavigation > ul li:focus-within {
+  outline: 2px solid var(--accentColor);
+}
+#primaryNavigation > ul li:focus-within * {
+  outline: 0px;
+}
+#primaryNavigation > ul li:has(ul li a:focus-visible) {
+  outline: 0px;
+}
+#primaryNavigation > ul li ul li a:focus-visible {
+  outline: 2px solid var(--accentColor);
+}
+#primaryNavigation > ul li ul li a:focus-visible * {
+  outline: 0px;
+}
+#primaryNavigation > ul li span, #primaryNavigation > ul li a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--textColor) !important;
+  text-decoration: none !important;
+}
+#primaryNavigation > ul li span :nth-child(3), #primaryNavigation > ul li a :nth-child(3) {
+  position: relative;
+  right: 0.25em;
+  margin-left: auto;
+}
+#primaryNavigation > ul li ul {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0.5em;
+  max-height: 50svh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(0, 0, 0, 0.1);
+}
+#primaryNavigation > ul li ul::-webkit-scrollbar {
+  width: 0.5em;
+  border-radius: 0.25em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#primaryNavigation > ul li ul::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  border-radius: 0.25em;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+#primaryNavigation > ul li ul::-webkit-scrollbar-button, #primaryNavigation > ul li ul::-webkit-scrollbar-corner {
+  display: none;
+}
+#primaryNavigation > ul li ul li {
+  padding: 0.5em;
+  margin-right: 0.5em;
+  border-radius: 0.25em;
+  cursor: pointer;
+}
+
+#mainArticle {
+  z-index: 0;
+  position: fixed;
+  inset: 0 0 0 clamp(250px, 30svw, 500px);
+}
+
+@media (max-width: 768px) {
+  #navButton {
+    visibility: visible;
+    box-shadow: var(--shadow--8px);
+  }
+  #primaryNavigation {
+    inset: 0 0 0 0;
+    width: 100svw;
+    visibility: hidden;
+  }
+  #mainArticle {
+    inset: 0 0 0 0;
+    width: 100svw;
+  }
+}
+#heroImage {
+  object-position: center 20%;
+  height: 100%;
+  width: 100%;
+}
+
+#aboutOverlay {
+  position: absolute;
+  inset: auto auto 0 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(25px);
+  background-color: rgba(255, 248, 231, 0.4666666667);
+  color: #4f5742;
+  border-radius: 1em 1em 0 0;
+  box-shadow: var(--shadow--4px);
+  height: 90%;
+  width: 90%;
+  max-width: 80ch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1em;
+  font-size: 1.15rem;
+}
+#aboutOverlay .title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+#aboutOverlay .title h1 {
+  flex: 1;
+  font-size: 1.5em;
+  font-family: "Dawning of a New Day", cursive;
+}
+#aboutOverlay .subtitle {
+  font-size: 1.5em;
+}
+#aboutOverlay .body {
+  max-width: 60ch;
+  margin: 1em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5em;
+}
+#aboutOverlay .hideArticle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 0.5em;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
+  margin-left: auto;
+}
+#aboutOverlay .hideArticle:focus-within, #aboutOverlay .hideArticle:focus-visible {
+  outline: 2px solid var(--accentColor);
+}
+#aboutOverlay .hideArticle * {
+  background-color: transparent;
+  text-decoration: none !important;
+}
+#aboutOverlay .hideArticle *:focus-visible {
+  outline: 0px;
+}
+#aboutOverlay .hideArticle:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+#aboutOverlay .hideArticle :last-child {
+  margin-left: auto;
+}
+#aboutOverlay.hide {
+  transition: 500ms;
+  transform: translate(-50%, calc(100% - 4rlh));
+}
+#aboutOverlay.hide .subtitle, #aboutOverlay.hide .body {
+  opacity: 0%;
+}
+#aboutOverlay.hide .hideArticle {
+  transition: 250ms ease-in;
+  rotate: 180deg;
+}
+#aboutOverlay.show {
+  transition: 500ms;
+  transform: translate(-50%, 0%);
+}
+#aboutOverlay.show .subtitle, #aboutOverlay.show .body {
+  opacity: 0%;
+}
+#aboutOverlay.show .hideArticle {
+  transition: 250ms;
+  rotate: 0deg;
+}
+
+@media (prefers-color-scheme: dark) {
+  #aboutOverlay {
+    background-color: rgba(79, 87, 66, 0.6666666667);
+    color: #fff8e7;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
